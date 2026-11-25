@@ -1,6 +1,8 @@
+import { connectLambda } from '@netlify/blobs';
 import {randomUUID} from 'node:crypto';
 import {store,reply,admin,validate,clean} from './_shared.mjs';
 export const handler=async e=>{try{
+ connectLambda(e);
  if(e.httpMethod==='POST'){
   const d=JSON.parse(e.body||'{}');const error=validate(d);if(error)return reply(400,{error});
   const s=store();const record={id:randomUUID(),...clean(d),criadoEm:new Date().toISOString()};await s.setJSON(record.id,record);return reply(201,{ok:true,id:record.id});
