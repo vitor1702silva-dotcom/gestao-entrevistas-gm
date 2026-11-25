@@ -1,6 +1,11 @@
 import {getStore} from '@netlify/blobs';
 import {createHmac,timingSafeEqual} from 'node:crypto';
-export function store(){
+export function export function store(){
+ return getStore({
+  name:'entrevistas-gm',
+  consistency:'strong'
+ });
+}
  const siteID=process.env.BLOBS_SITE_ID || process.env.SITE_ID;
  const token=process.env.BLOBS_TOKEN || process.env.NETLIFY_AUTH_TOKEN;
  if(siteID && token)return getStore({name:'entrevistas-gm',siteID,token,consistency:'strong'});
