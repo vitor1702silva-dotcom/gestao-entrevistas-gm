@@ -21,3 +21,6 @@ O repositório pode ser público; as senhas e tokens devem ficar apenas nas vari
 ## Observações
 
 Este pacote foi preparado para implantação, mas **não foi testado na conta Netlify do usuário**. Para investigar falhas, consulte Netlify → Functions → `records` → logs. A exclusão é permanente; faça exportações periódicas.
+
+## Login simplificado
+Apenas ADMIN_PASSWORD é necessária, como segredo no contexto Produção e escopo Funções. Use senha longa e exclusiva. ADMIN_SECRET não é utilizada nesta versão. Republicar após alterar a senha. Sessões antigas deixam de funcionar.
